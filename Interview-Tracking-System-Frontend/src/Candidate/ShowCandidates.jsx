@@ -66,7 +66,9 @@ class ShowCandidates extends React.Component {
                                         <td>{candidate.location}</td>
                                         <td><Link className="btn btn-primary" to={`/EditCandidate/${candidate.candidateId}`}>Edit</Link>
                                         &nbsp;
-                                        <button className="btn btn-danger" onClick={()=>deleteCandidate(candidate.candidateId)}>DELETE</button></td>
+                                        <button className="btn btn-danger" onClick={()=>deleteCandidate(candidate.candidateId)}>Delete</button>
+                                        &nbsp;
+                                        <Link className="btn btn-success" to={`/AddInterview/${candidate.candidateId}`}>Schedule</Link></td>
 
                                         
                                     </tr>

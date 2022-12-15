@@ -50,7 +50,7 @@ function App() {
           <Route path="/ShowPanelMembers"  element={<ShowPanelMembers />}></Route>
           <Route path="/SaveEmployee"  element={<SaveEmployee />}></Route>
           <Route path="/ShowEmployees"  element={<ShowEmployees />}></Route>
-          <Route path="/AddInterview"  element={<AddInterview/>}></Route>
+          <Route path="/AddInterview/:id"  element={<AddInterview/>}></Route>
           <Route path="/EditCandidate/:id"  element={<EditCandidate />}></Route>
           <Route path="/ShowInterviews"  element={<ShowInterviews />}></Route>
           <Route path="/EditEmployee/:id"  element={<EditEmployee />}></Route>

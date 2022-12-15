@@ -15,6 +15,7 @@ class ShowPanelMembers extends React.Component {
             this.setState({
                 panelMembers:response.data
             })
+            
         })
     }
     render(){ 
