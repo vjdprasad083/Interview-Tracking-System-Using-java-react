@@ -1,0 +1,215 @@
+ * {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.header{
+  display: flex;
+  background-color: #0d3853;
+  position: fixed;
+  width: 100%;
+  color: white;
+  top: 0px;
+  height: 70px;
+}
+.menu{
+  display: flex;
+  background-color:rgba(41, 40, 40, 0.993);
+  color: white;
+  height: 50px;
+
+}
+.header-name{
+  /* font-family: Verdana, Geneva, Tahoma, sans-serif; */
+  padding-top: 23px;
+  padding-left: 2rem;
+}
+
+.header-tag{
+  padding-top: 23px;
+  font-size: 6px;
+}
+.header-menu{
+  /* font-family: Verdana, Geneva, Tahoma, sans-serif; */
+  align-items: center;
+  padding-left: 70px;
+  position: absolute;
+  right: 1rem;
+}
+  
+.header-menu ul li {
+  float: left;
+  list-style: none;
+}
+
+
+.header-menu ul li a {
+  display: block;
+  color: rgb(243, 238, 238);
+  text-align: center;
+  padding: 23px 23px;
+  text-decoration: none;
+}
+
+
+.header-menu ul li a:hover {
+  color: rgb(223, 218, 218);
+}
+
+.header-menu ul li ul{
+  display: none;
+  background-color: rgb(255, 255, 255);
+  position: absolute;
+  padding-top: 1rem;
+  padding-left: 0rem;
+  width: 11.5rem;
+  text-align: left;
+  margin-left: -9rem;
+  margin-top: 10px;
+  box-shadow: 0 2px 5px 0 rgb(0 0 0 / 10%), 0 2px 10px 0 rgb(0 0 0 / 10%);
+  color: #000;
+}
+.header-menu ul li ul li {
+  display: contents;
+  list-style: none;
+}
+.header-menu ul li ul li a{ 
+  color: #000;
+  padding: 9px;
+  text-align: left;
+  padding-left: 2rem;
+}
+.header-menu ul li ul li a:hover{
+  background-color: #eeeff0;
+  color: #000;
+}
+
+.header-menu ul  :hover ul{
+  display: block;
+}
+.header-menu-logo{
+ padding: 20px 15px 20px 15px;
+}
+.header-menu-list{
+  padding-top: 20px;
+  padding-left: 20px;
+}
+
+.admin-menu{
+  background-color: rgb(255, 255, 255);  
+  box-shadow: 0 2px 5px 0 rgb(0 0 0 / 10%), 0 2px 10px 0 rgb(0 0 0 / 10%);
+  width: 100%;
+  top:70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  position: fixed;
+  height: 49px;
+  z-index: -1;
+}
+.admin-menu nav{
+  padding-left: 20px;
+}
+.admin-menu nav ul{
+  width: 100%;
+  text-align: right;
+  margin-bottom: 0rem;
+  padding-left: 1rem;
+}
+.admin-menu nav ul li{
+  display: inline-block;
+  list-style: none;
+  padding: 14px 25px;
+}
+.admin-menu nav ul li a{
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+}
+.admin-menu nav ul li a:hover{
+ color: rgb(83, 75, 75); 
+}
+.admin-menu nav ul li ul li{
+  display: block;
+  list-style: none;
+  padding: 10px 25px;
+
+}
+
+.admin-menu nav ul li ul li a:hover{
+  color:black;
+  
+ } 
+.admin-menu nav ul li ul {
+  display: none;
+  background-color: rgb(255, 255, 255);
+  position: absolute;
+  padding-left: 0rem;
+  padding-top: 1rem;
+  width: 13.5rem;
+  text-align: left;
+  margin-left: -1rem;
+  margin-top: 15px;
+  box-shadow: 0 2px 5px 0 rgb(0 0 0 / 10%), 0 2px 10px 0 rgb(0 0 0 / 10%);
+}
+.admin-menu .inside-menu :hover{
+  background-color: #eeeff0;
+}
+.admin-menu nav ul li:hover ul{
+  background-color: white;
+  display: block;
+}
+
+
+
+.main-container {
+  width: 100%;
+}
+.students{
+  padding-left: 2rem;
+  width: 100%;
+  margin-top: 9rem;
+  position: absolute;
+  z-index: -2;
+}
+
+.info-label {
+  padding-left: 35%;
+  padding-top: 1rem;
+}
+
+.students-table{
+  display: block;
+  padding-right: 3%;
+  padding-left: 3%;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  text-align: center;
+}
+
+.addCandidate{
+  display: block;
+  padding-top: 11rem;
+  padding-left: 25rem;
+  position: absolute;
+  z-index: -2;
+
+}
+.addCandidate-form{
+  margin-left: auto;
+  margin-right: auto;
+  width: 31rem;
+  color: red;
+}
+.addCandidate-form button{
+  width:6rem;
+  margin-left: 22rem;
+}
+.temp{
+  text-align: center;
+  padding-left: 36rem;
+  padding-top: 21rem;
+  position: absolute;
+  z-index: -2;
+}
+
+

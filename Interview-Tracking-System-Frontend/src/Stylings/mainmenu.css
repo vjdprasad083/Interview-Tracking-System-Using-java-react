@@ -1,0 +1,29 @@
+.sidebar {
+    position: fixed;
+    padding: 1rem 0 3rem;
+    top: 70px;
+    bottom: 0;
+    left: 0;
+    box-shadow: 0 2px 5px 0 rgb(0 0 0 / 5%), 0 2px 10px 0 rgb(0 0 0 / 5%);
+    width: 20%;
+    z-index: 600;
+    background-color: rgb(255, 255, 255);
+    overflow-y: scroll;
+  }
+
+  /* .sidebar .active {
+    border-radius: 5px;
+    border-color: #146a4c;
+    background-color: #146a4c;
+  } */
+  .sidebar a:hover{
+    background-color: #D0D0D0;
+    color: #000;
+  }
+
+  .sidebar .sidemenu-list {
+    padding: 0.5rem 1rem;
+    color: #000;
+    border-bottom: 1px solid;
+    border-color: rgba(0, 0, 0, 0.125);
+  }
