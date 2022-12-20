@@ -39,6 +39,7 @@ class ShowEmployees extends React.Component {
                             <tr>
                                 <th>Employee Id</th>
                                 <th>Employee Name</th>
+                                <th>Role</th>
                                 <th>Actions</th>
                                 
                             </tr>                            
@@ -49,6 +50,7 @@ class ShowEmployees extends React.Component {
                                     <tr key={Employee.employeeId}>
                                         <td>{Employee.employeeId}</td>
                                         <td>{Employee.employeeName}  </td>
+                                        <td>{Employee.role}  </td>
                                         <td><Link className="btn btn-primary" to={`/EditEmployee/${Employee.employeeId}`}>Edit</Link>                                        &nbsp;
                                         <button className="btn btn-danger" onClick={()=>deleteEmployee(Employee.employeeId)}>DELETE</button></td>
                                         

@@ -35,6 +35,9 @@ public class Employee {
 	@Column(name = "EMPLOYEE_NAME")
 	private String employeeName;
 	
+	@Column(name="ROLE")
+	private String role;
+	
 	
 	@JsonIgnore
 	@OneToOne(fetch = FetchType.LAZY,mappedBy = "employee",cascade = CascadeType.REMOVE)

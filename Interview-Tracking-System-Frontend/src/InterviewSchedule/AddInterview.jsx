@@ -59,7 +59,7 @@ function SaveInterview(){
                 
                <form onSubmit={handleSubmit(addInterview)}>
                 
-               <input type="text" name="candidate" placeholder="Candidate Id"  value={candidate.candidateName}  className="form-control"
+               <input type="text" name="candidate" placeholder="Candidate Id" defaultValue={candidate.candidateName}  className="form-control"
                  {...register("candidate", {required:true, maxLength:20})}/><br />
                 {errors.candidate && errors.candidate.type === 'required' && <span className='error'> Candidate Id  is Required</span>}
                 {errors.candidate && errors.candidate.type === 'maxLength' && <span className='error'>Candidate Id  must not contain more than 20 charcters</span>}

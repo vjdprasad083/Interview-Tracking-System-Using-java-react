@@ -37,6 +37,7 @@ public class PanelMember {
 	@NotBlank(message = "password should not be null and empty")
 	private String password;
 	
+	
 	@NotBlank(message = "panelMemberType must not to be null")
 	@Column(name = "TYPE")
 	private String panelMemberType;

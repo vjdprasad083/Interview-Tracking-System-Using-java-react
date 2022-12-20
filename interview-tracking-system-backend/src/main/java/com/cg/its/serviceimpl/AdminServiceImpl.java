@@ -175,6 +175,8 @@ public class AdminServiceImpl implements AdminService {
 		Optional<Employee> employee= employeeRepo.findById(employeeId);
 		if(employee.isPresent()) {
 			
+			employee.get().setRole(panelMember.getPanelMemberType());
+			
 			panelMember.setEmployee(employee.get());
 			return panelMemberRepo.save(panelMember);	
 		}
@@ -223,7 +225,7 @@ public class AdminServiceImpl implements AdminService {
 			panelMember.setPanelMemberId(panelMemberId);
 			Optional<Employee> employee= employeeRepo.findById(employeeId);
 			if(employee.isPresent()) {
-				
+				employee.get().setRole(panelMember.getPanelMemberType());
 				panelMember.setEmployee(employee.get());
 				return panelMemberRepo.save(panelMember);
 			}
@@ -283,7 +285,8 @@ public class AdminServiceImpl implements AdminService {
 	public Admin createAdmin(Admin admin, Integer employeeId) {
 		Optional<Employee> employee= employeeRepo.findById(employeeId);
 		if(employee.isPresent()) {
-			
+			employee.get().setRole("Admin");
+
 			admin.setEmployee(employee.get());
 			return adminRepo.save(admin);	
 		}
