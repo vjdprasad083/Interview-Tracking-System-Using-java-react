@@ -49,9 +49,6 @@ function EditEmployee(){
 
                <form onSubmit={handleSubmit(editEmployee)}>
 
-               <input type="text" name="employeeId" placeholder="Employee Id" value={employee.employeeId} onChange={handleChange} className="form-control"
-                {...register("employeeId")}/>
-
                <input type="text" name="employeeName" placeholder="Employee Name" defaultValue={employee.employeeName} onChange={(e) => handleChange(e)}  className="form-control"
                  {...register("employeeName")}/>
 

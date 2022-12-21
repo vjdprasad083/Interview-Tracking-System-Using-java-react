@@ -32,7 +32,7 @@ function AdminHeader() {
                     <nav className="header-menu"> 
                         <ul>
                             <li className="header-menu-li"><a className="active" href="/AdminHeader">Home</a></li>
-                            <li className="header-menu-li"><a className="active" href="#">Blog</a></li>
+                            <li className="header-menu-li"><a className="active" href="/Contact">Blog</a></li>
                             <li className="header-menu-li"><a className="active" href="/Help">Help</a></li>
                             <li className="header-menu-li"><a className="active" href="/Contact">Contact us</a></li>
                             <li className="header-menu-logo">
@@ -55,7 +55,7 @@ function AdminHeader() {
             <div className="admin-menu">
                 <nav >
                     <ul>
-                        <li><a href="#">Candidate</a>
+                        <li><a href="/ShowCandidates">Candidate</a>
                             <ul className="inside-menu">
                                 <li><a href="/SaveCandidate">Add Candidate</a></li>
                                 <li><a href="/ShowCandidates">View Candidate</a></li>
@@ -63,23 +63,23 @@ function AdminHeader() {
                                 <li><a href="/ShowCandidates">Update Candidate</a></li>
                             </ul>
                         </li>
-                        <li><a href="#">Employee</a>
+                        <li><a href="/ShowEmployees">Employee</a>
                             <ul className="inside-menu">
                                 <li><a href="/SaveEmployee">Add Employee</a></li>
                                 <li><a href="/ShowEmployees">View Employee</a></li>
                                 <li><a href="/ShowEmployees">Delete Employee</a></li>
                                 <li><a href="/ShowEmployees">Update Employee</a></li>
                             </ul></li>
-                        <li><a href="#">Panel Member</a>
+                        <li><a href="/ShowPanelMembers">Panel Member</a>
                             <ul className="inside-menu">
-                                <li><a href="/SavePanelMember">Add Panel Member</a></li>
+                                <li><a href="/ShowEmployees">Add Panel Member</a></li>
                                 <li><a href="/ShowPanelMembers">View Panel Member</a></li>
                                 <li><a href="/ShowPanelMembers">Delete Panel Member</a></li>
                                 <li><a href="/ShowPanelMembers">Update Panel Member</a></li>
                             </ul></li>
-                        <li><a href="#">Interviews</a>
+                        <li><a href="/ShowInterviews">Interviews</a>
                             <ul className="inside-menu">
-                                <li><a href="/AddInterview">Add Interviews</a></li>
+                                <li><a href="/ShowCandidates">Add Interviews</a></li>
                                 <li><a href="/ShowInterviews">View Interviews</a></li>
                                 <li><a href="/ShowInterviews">Delete Interviews</a></li>
                                 <li><a href="/ShowInterviews">Update Interviews</a></li>

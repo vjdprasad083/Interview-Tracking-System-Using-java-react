@@ -1,16 +1,35 @@
+import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import AdminHeader from '../Component/AdminHeader';
+import EmployeeService from '../Service/EmployeeService';
 import PanelMemberService from '../Service/PanelMemberService';
 
 function SavePanelMember(){
 
+    const {id} = useParams();
+
     const history= useNavigate();
  
     const {register, handleSubmit, formState: {errors}} = useForm();
+
+    const [employee,setEmployee]=useState([]);
+
+    useEffect(() => {
+        if (id) {
+           getEmployeeById(id)
+        }
+     })
+     
+     const getEmployeeById = async (id) => {
+        let employee = await (await EmployeeService.getEmployeeById(id)).data;
+        setEmployee(employee)
+     }
+
+
  
     const SavePanelMember = data => {
-        PanelMemberService.addPanelMembers(data.employeeId,data).then(response =>{
+        PanelMemberService.addPanelMembers(id,data).then(response =>{
             alert("Added successfully");
             history('/ShowPanelMembers')
         })
@@ -24,9 +43,8 @@ function SavePanelMember(){
         <div className="addCandidate-form">
             
                <form onSubmit={handleSubmit(SavePanelMember)}>
-                <input type="text" name="Employee Id" placeholder="Employee Id" className="form-control"
-                {...register("employeeId", {required:true})}/>
-                {errors.employeeId && errors.employeeId.type === 'required' && <span className='error'>Employee Id is Required</span>}
+                <input type="text" name="Employee Id" placeholder="Employee Name" value={employee.employeeName} className="form-control"
+                {...register("employeeId")}/>
                
 
                 <input type="text" name="password" placeholder="Password" className="form-control"

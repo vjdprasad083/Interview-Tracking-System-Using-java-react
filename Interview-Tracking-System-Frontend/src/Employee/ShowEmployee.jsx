@@ -51,8 +51,9 @@ class ShowEmployees extends React.Component {
                                         <td>{Employee.employeeId}</td>
                                         <td>{Employee.employeeName}  </td>
                                         <td>{Employee.role}  </td>
-                                        <td><Link className="btn btn-primary" to={`/EditEmployee/${Employee.employeeId}`}>Edit</Link>                                        &nbsp;
-                                        <button className="btn btn-danger" onClick={()=>deleteEmployee(Employee.employeeId)}>DELETE</button></td>
+                                        <td><Link className="btn btn-primary" to={`/EditEmployee/${Employee.employeeId}`}>Edit</Link>&nbsp;
+                                        <button className="btn btn-danger" onClick={()=>deleteEmployee(Employee.employeeId)}>DELETE</button>&nbsp;
+                                        <Link className="btn btn-success" to={`/SavePanelMember/${Employee.employeeId}`}>Assign Role</Link></td>
                                         
                                     </tr>
                                 ))

@@ -24,7 +24,7 @@ function SaveEmployee(){
 
                <form onSubmit={handleSubmit(SaveEmployee)}>
                <input type="text" name="employeeName" placeholder="Employee Name" className="form-control"
-                 {...register("employeeName", {required:true, maxLength:20})}/>
+                 {...register("employeeName", {required:true, maxLength:20})}/><br />
                 {errors.employeeName && errors.employeeName.type === 'required' && <span className='error'> Employee Name is Required</span>}
                 {errors.employeeName && errors.employeeName.type === 'maxLength' && <span className='error'>Employee Name must not contain more than 20 charcters</span>}
                 

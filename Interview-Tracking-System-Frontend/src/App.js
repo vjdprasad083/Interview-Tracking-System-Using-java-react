@@ -46,7 +46,7 @@ function App() {
           <Route path="/ShowCandidates" element= {<ShowCandidates />}></Route>
           <Route path="/ShowCandidates" element= {<ShowCandidates />}></Route>
           <Route path="/SaveCandidate"  element={<SaveCandidate />}></Route>
-          <Route path="/SavePanelMember"  element={<SavePanelMember />}></Route>
+          <Route path="/SavePanelMember/:id"  element={<SavePanelMember />}></Route>
           <Route path="/ShowPanelMembers"  element={<ShowPanelMembers />}></Route>
           <Route path="/SaveEmployee"  element={<SaveEmployee />}></Route>
           <Route path="/ShowEmployees"  element={<ShowEmployees />}></Route>

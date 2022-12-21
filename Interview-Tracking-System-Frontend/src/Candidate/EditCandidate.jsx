@@ -58,9 +58,6 @@ function EditCandidate(){
             <div className="addCandidate-form">
                <form onSubmit={handleSubmit(editCandidate)}>
 
-               <input type="text" name="candidateId"  placeholder="Candidate Id" value={candidate.candidateId}  onChange={handleChange} className="form-control"
-                 {...register("candidateId")}/><br />
-
                 <input type="text" name="candidateName" placeholder="Candidate Name" defaultValue={candidate.candidateName} onChange={(e) => handleChange(e)} className="form-control"
                  {...register("candidateName")}/>
                 

@@ -3,13 +3,19 @@ import { useForm } from 'react-hook-form';
 import { useNavigate, useParams } from 'react-router-dom';
 import AdminHeader from '../Component/AdminHeader';
 import InterviewScheduleService from '../Service/InterviewScheduleService';
+import PanelMemberService from '../Service/PanelMemberService';
 
 function EditInterview(){
 
     const history= useNavigate();
 
+    const {register, handleSubmit,formState: { errors}} = useForm();
 
     const{id}=useParams();
+
+    const [panelMembers,setPanelMembers]=useState([]);
+
+
 
     const [interviews, setInterviews] = useState({ 
         interviewSchduleId: '', 
@@ -31,14 +37,24 @@ function EditInterview(){
       setInterviews(interviews)
    }
 
+   useEffect(()=>{
+
+    const getEmployee=async()=>{
+        PanelMemberService.getPanelMembers().then(response =>{
+            setPanelMembers(response.data);
+        })
+    }
+    getEmployee(); 
+},[]);
+
    const handleChange = (e) => {
     setInterviews({ ...interviews, [e.target.placeholder]: e.target.value });
  }
  
-    const {register, handleSubmit} = useForm();
  
-    const editInterview = interviews => {
-        InterviewScheduleService.updateInterview(id,interviews.panelMember,interviews.candidate,interviews).then(response =>{
+    const editInterview = interview => {
+        console.log(interviews)
+        InterviewScheduleService.updateInterview(id,interview.panelMember,interviews.candidate.candidateId,interview).then(response =>{
             alert("Updated successfully");
             history('/ShowInterviews')
         })
@@ -53,22 +69,31 @@ function EditInterview(){
 
                <form onSubmit={handleSubmit(editInterview)}>
 
-               <input type="text" name="interview" placeholder="Interview Id" value={interviews.interviewSchduleId} onChange={handleChange} className="form-control"
-                {...register("interview")}/><br />
-
-
-               <input type="text" name="candidate" placeholder="Candidate Id" value={interviews.candidate.candidateId} onChange={handleChange} className="form-control"
-                 {...register("candidate")}/><br />
-
-                <input type="text" name="panelMember" placeholder="panelmember Id" value={interviews.panelMember.panelMemberId} onChange={handleChange} className="form-control"
-                 {...register("panelMember")}/><br />
-
-                <input type="Date" name="interviewDate" placeholder="Interview Date" defaultValue={interviews.interviewDate} onChange={(e) => handleChange(e)} className="form-control"
-                 {...register("interviewDate")}/><br />
               
 
-                <input type="text" name="finalStatus" placeholder="Final Status"  defaultValue={interviews.finalStatus} onChange={(e) => handleChange(e)} className="form-control"
-                 {...register("finalStatus")}/><br />
+
+               <input type="text" name="candidate" placeholder="Candidate Id" value={interviews.candidate.candidateName} onChange={handleChange}  className="form-control"
+                 {...register("candidate")}  /><br />
+
+                <select name="panelMember" className="form-control" {...register("panelMember", {required:true})}>
+                    <option>--Select Interviewer--</option>
+                        {
+                            panelMembers.map((panel)=>(
+                                <option key={panel.panelMemberId} value={panel.panelMemberId}>{panel.employee.employeeName}</option>    
+                            ) ) 
+                        }
+                </select><br></br>
+
+                <input type="Date" name="interviewDate" placeholder="Interview Date"  onChange={(e) => handleChange(e)} className="form-control"
+                 {...register("interviewDate",{required:true})}/><br />
+                 {errors.interviewDate && errors.interviewDate.type === 'required' && <span className='error'> Interview Date  is Required</span>}
+
+              
+
+                <input type="text" name="finalStatus" placeholder="Final Status"   onChange={(e) => handleChange(e)} className="form-control"
+                 {...register("finalStatus",{required:true})}/><br />
+                {errors.finalStatus && errors.finalStatus.type === 'required' && <span className='error'> Final Status  is Required</span>}
+
                 
                
                 <br></br><button type="submit" className="btn btn-primary">Update</button>

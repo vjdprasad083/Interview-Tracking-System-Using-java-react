@@ -35,9 +35,8 @@ function EditPanelMember(){
  }
  
     const {register, handleSubmit} = useForm();
-    console.log(panelMember);
-    const editPanelMember = panelMember => {
-        PanelMemberService.updatePanelMember(panelMember.panelMemberId,panelMember.employeeId,panelMember).then(response =>{
+    const editPanelMember = panelMembers => {
+        PanelMemberService.updatePanelMember(panelMember.panelMemberId,panelMembers.employeeId,panelMembers).then(response =>{
             alert("Updated successfully");
             history('/ShowPanelMembers')
         })
@@ -52,7 +51,7 @@ function EditPanelMember(){
         <div className="addCandidate-form">
 
              <form onSubmit={handleSubmit(editPanelMember)}>
-                <input type="text" name="panelMemberId" placeholder="PanelMember Id" value={panelMember.panelMemberId} onChange={handleChange} className="form-control"
+                <input type="text" name="panelMemberId" placeholder="Employee Name" value={panelMember.employee.employeeName} onChange={handleChange} className="form-control"
                 {...register("panelMemberId")}/>
 
                 <input type="text" name="password" placeholder="Password" value={panelMember.password} onChange={handleChange} className="form-control"

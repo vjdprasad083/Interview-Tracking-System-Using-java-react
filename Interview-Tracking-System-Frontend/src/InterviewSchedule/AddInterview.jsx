@@ -59,9 +59,8 @@ function SaveInterview(){
                 
                <form onSubmit={handleSubmit(addInterview)}>
                 
-               <input type="text" name="candidate" placeholder="Candidate Id" defaultValue={candidate.candidateName}  className="form-control"
-                 {...register("candidate", {required:true, maxLength:20})}/><br />
-                {errors.candidate && errors.candidate.type === 'required' && <span className='error'> Candidate Id  is Required</span>}
+               <input type="text" name="candidate" placeholder="Candidate Id" value={candidate.candidateName}  className="form-control"
+                 {...register("candidate", {maxLength:20})}/><br />
                 {errors.candidate && errors.candidate.type === 'maxLength' && <span className='error'>Candidate Id  must not contain more than 20 charcters</span>}
 
                 <select name="panelMember" className="form-control" {...register("panelMember", {required:true})}>
@@ -75,10 +74,12 @@ function SaveInterview(){
 
                 <input type="Date" name="interviewDate" placeholder="Interview Date" className="form-control"
                  {...register("interviewDate", {required:true})}/><br />
+                 {errors.interviewDate && errors.interviewDate.type === 'required' && <span className='error'> Interview Date  is Required</span>}
+
               
 
                 <input type="text" name="finalStatus" placeholder="Final Status" className="form-control"
-                 {...register("finalStatus", {required:true, maxLength:20})}/><br />
+                 {...register("finalStatus", { maxLength:20})}/><br />
                 {errors.finalStatus && errors.finalStatus.type === 'required' && <span className='error'> Final Status is Required</span>}
                 {errors.finalStatus && errors.finalStatus.type === 'maxLength' && <span className='error'>Final Status must not contain more than 20 charcters</span>}
                 
