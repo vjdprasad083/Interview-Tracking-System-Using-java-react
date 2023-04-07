@@ -11,7 +11,7 @@ class InterviewCandidates extends React.Component {
      }
 
      componentDidMount(){
-        HrService.getInterviewCandidates().then(response =>{
+        HrService.getInterviewCandidates(sessionStorage.getItem('id')).then(response =>{
             this.setState({
                 candidates:response.data
             })

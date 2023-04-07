@@ -12,7 +12,7 @@ class TechInterviews extends React.Component {
      }
 
      componentDidMount(){
-        TechService.getTechInterviews().then(response =>{
+        TechService.getTechInterviewsById(sessionStorage.getItem('id')).then(response =>{
             this.setState({
                 interviews:response.data
             })

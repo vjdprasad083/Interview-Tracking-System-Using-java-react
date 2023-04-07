@@ -1,19 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import 'bootstrap/dist/css/bootstrap.css'
-import {useNavigate} from "react-router-dom";
+import {Link, useNavigate, useParams} from "react-router-dom";
 function HrHeader() {
     
     const history = useNavigate();
-    if (sessionStorage.getItem('role') !== 'Hr' || sessionStorage.getItem('role') == null || sessionStorage.getItem('role') == undefined) {
+    if (sessionStorage.getItem('role') !== 'Hr' || sessionStorage.getItem('role') == null ) {
         sessionStorage.setItem('role',null);
+        sessionStorage.setItem('id',null);
         history('/')
       }
 
       const logout=()=>{
         sessionStorage.setItem('role',null);
+        sessionStorage.setItem('id',null);
         history('/');
 
       }
+
 
         return(
             <>
@@ -43,7 +46,7 @@ function HrHeader() {
                                 <ul className="profile-menu">
                                     <li><a href="#">My Profile</a></li>
                                     <li><a href="#">Edit Profile</a></li>
-                                    <li><a href="/UpdatePassword">Change password</a></li>
+                                    <li><a href="#">Change password</a></li>
                                     <li><a href="#">Help</a></li>
                                     <li><a onClick={logout}>Logout</a></li>
                                  </ul>
@@ -54,11 +57,12 @@ function HrHeader() {
              <div className="admin-menu">
              <nav >
                  <ul>
-                     <li><a  href="/HrInterviews">Interviews</a>
+                     <li><a href="/HrInterviews">Interviews</a>
                      </li>
                      <li><a href="/InterviewCandidates">Candidates</a>
                        </li>
-                     <li><a href="/HrInterviews">Give Rating</a></li>
+                     <li><a href="/HrInterviews">Give Rating</a>
+                     </li>
                  </ul> 
              </nav>
          </div>

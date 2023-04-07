@@ -1,19 +1,21 @@
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.css'
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 
 
 function TechHeader() {
 
     const history = useNavigate();
-    if (sessionStorage.getItem('role') !== 'Tech' || sessionStorage.getItem('role') == null || sessionStorage.getItem('role') == undefined) {
+    if (sessionStorage.getItem('role') !== 'Tech' || sessionStorage.getItem('role') == null ) {
         sessionStorage.setItem('role',null);
+        sessionStorage.setItem('id',null);
         history('/')
       }
 
       const logout=()=>{
         sessionStorage.setItem('role',null);
+        sessionStorage.setItem('id',null);
         history('/');
 
       }
@@ -46,7 +48,7 @@ function TechHeader() {
                                 <ul className="profile-menu">
                                     <li><a href="#">My Profile</a></li>
                                     <li><a href="#">Edit Profile</a></li>
-                                    <li><a href="/UpdatePassword">Change password</a></li>
+                                    <li><a href="#">Change password</a></li>
                                     <li><a href="#">Help</a></li>
                                     <li><a onClick={logout}>Logout</a></li>
                                  </ul>

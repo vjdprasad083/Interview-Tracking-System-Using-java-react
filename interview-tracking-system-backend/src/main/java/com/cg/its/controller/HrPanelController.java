@@ -35,9 +35,9 @@ public class HrPanelController {
 		return new ResponseEntity<InterviewSchedule>(interviewSchedule,HttpStatus.OK);
 	}
 	
-	@GetMapping("/hr/interviews/candidates")
-	public ResponseEntity<List<Candidate>>getInterviewCandidate() throws DetailsNotFoundException {
-		List<Candidate> candidate= service.viewInterviewCandidates();
+	@GetMapping("/hr/interviews/candidates/{panelMemberId}")
+	public ResponseEntity<List<Candidate>>getInterviewCandidate(@PathVariable Integer panelMemberId) throws DetailsNotFoundException {
+		List<Candidate> candidate= service.viewInterviewCandidates(panelMemberId);
 		return new ResponseEntity<List<Candidate>>(candidate,HttpStatus.OK);
 	}
 	
@@ -47,9 +47,9 @@ public class HrPanelController {
 		return new ResponseEntity<Candidate>(candidateRef,HttpStatus.OK);
 	}
 	
-	@GetMapping("/hr/interviews")
-	public ResponseEntity<List<InterviewSchedule>> getHrInterviews() throws InterviewNotFoundException{
-		List<InterviewSchedule> interviews=service.getHrInterviews();
+	@GetMapping("/hr/interviews/{panelMemberId}")
+	public ResponseEntity<List<InterviewSchedule>> getHrInterviews(@PathVariable Integer panelMemberId) throws InterviewNotFoundException{
+		List<InterviewSchedule> interviews=service.getHrInterviews(panelMemberId);
 		return  new ResponseEntity<List<InterviewSchedule>>(interviews,HttpStatus.OK);
 	}
 

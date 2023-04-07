@@ -11,7 +11,7 @@ class TechInterviewCandidates extends React.Component {
      }
 
      componentDidMount(){
-        TechService.getInterviewCandidates().then(response =>{
+        TechService.getInterviewCandidates(sessionStorage.getItem('id')).then(response =>{
             this.setState({
                 candidates:response.data
             })

@@ -12,7 +12,7 @@ public interface HrPanelService {
 	
 	
 	public InterviewSchedule giveHrRating(Integer rating, Integer interviewScheduleId)throws InterviewNotFoundException;
-	public List<Candidate> viewInterviewCandidates() throws DetailsNotFoundException;
+	public List<Candidate> viewInterviewCandidates(Integer panelMemberId) throws DetailsNotFoundException;
 	public Candidate getInterviewCandidateById(Integer candidateId) throws DetailsNotFoundException;
-	public List<InterviewSchedule> getHrInterviews ()throws InterviewNotFoundException;
+	public List<InterviewSchedule> getHrInterviews (Integer panelMemberId)throws InterviewNotFoundException;
 }

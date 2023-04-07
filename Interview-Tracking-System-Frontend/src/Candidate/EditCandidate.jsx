@@ -42,6 +42,7 @@ function EditCandidate(){
  
     
      const editCandidate =candidate => {
+        console.log(candidate)
         CandidateService.updateCandidate(id,candidate).then(response =>{
             alert("Updated successfully");
             history('/ShowCandidates')

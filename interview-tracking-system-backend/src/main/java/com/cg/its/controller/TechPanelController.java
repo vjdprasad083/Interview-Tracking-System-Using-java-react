@@ -35,9 +35,9 @@ public class TechPanelController {
 		return new ResponseEntity<InterviewSchedule>(interviewSchedule,HttpStatus.OK);
 	}
 	
-	@GetMapping("/tech/interviews/candidates")
-	public ResponseEntity<List<Candidate>>getInterviewCandidate() throws DetailsNotFoundException {
-		List<Candidate> candidate= service.viewInterviewCandidates();
+	@GetMapping("/tech/interviews/candidates/{panelMemberId}")
+	public ResponseEntity<List<Candidate>>getInterviewCandidate(@PathVariable Integer panelMemberId) throws DetailsNotFoundException {
+		List<Candidate> candidate= service.viewInterviewCandidates(panelMemberId);
 		return new ResponseEntity<List<Candidate>>(candidate,HttpStatus.OK);
 	}
 	@GetMapping("/tech/interviews/candidate/{candidate}")
@@ -47,9 +47,9 @@ public class TechPanelController {
 	}
 	
 
-	@GetMapping("/tech/interviews")
-	public ResponseEntity<List<InterviewSchedule>> getTechInterviews() throws InterviewNotFoundException{
-		List<InterviewSchedule> interviews=service.getTechInterviews();
+	@GetMapping("/tech/interviews/{panelMemberId}")
+	public ResponseEntity<List<InterviewSchedule>> getTechInterviews(@PathVariable Integer panelMemberId) throws InterviewNotFoundException{
+		List<InterviewSchedule> interviews=service.getTechInterviews(panelMemberId);
 		return  new ResponseEntity<List<InterviewSchedule>>(interviews,HttpStatus.OK);
 	}
 	

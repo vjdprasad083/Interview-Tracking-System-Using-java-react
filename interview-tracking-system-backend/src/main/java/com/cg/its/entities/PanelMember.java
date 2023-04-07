@@ -35,7 +35,7 @@ public class PanelMember {
 	private Integer panelMemberId;
 	
 	@NotBlank(message = "password should not be null and empty")
-	private String password;
+	private String password = "employee@123";
 	
 	
 	@NotBlank(message = "panelMemberType must not to be null")

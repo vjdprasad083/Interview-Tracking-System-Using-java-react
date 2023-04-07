@@ -10,7 +10,7 @@ import com.cg.its.exception.DetailsNotFoundException;
 public interface TechPanelService {
 
 	public InterviewSchedule giveTechRating(Integer rating, Integer interviewScheduleId)throws InterviewNotFoundException;
-	public List<Candidate> viewInterviewCandidates() throws DetailsNotFoundException;
+	public List<Candidate> viewInterviewCandidates(Integer panelMemberId) throws DetailsNotFoundException;
 	public Candidate getInterviewCandidateById(Integer candidateId) throws DetailsNotFoundException;
-	public List<InterviewSchedule> getTechInterviews ()throws InterviewNotFoundException;
+	public List<InterviewSchedule> getTechInterviews (Integer panelMemberId)throws InterviewNotFoundException;
 }

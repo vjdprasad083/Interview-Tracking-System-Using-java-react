@@ -9,10 +9,12 @@ import org.springframework.stereotype.Service;
 
 import com.cg.its.entities.Candidate;
 import com.cg.its.entities.InterviewSchedule;
+import com.cg.its.entities.PanelMember;
 import com.cg.its.exception.InterviewNotFoundException;
 import com.cg.its.exception.DetailsNotFoundException;
 import com.cg.its.repo.CandidateRepo;
 import com.cg.its.repo.InterviewScheduleRepo;
+import com.cg.its.repo.PanelMemberRepo;
 
 
 
@@ -25,6 +27,9 @@ public class HrPanelServiceImpl implements com.cg.its.service.HrPanelService {
 	
 	@Autowired
 	private CandidateRepo candidateRepo;
+	
+	@Autowired
+	private PanelMemberRepo panelMemberRepo;
 	
 	
 	@Override
@@ -58,30 +63,47 @@ public class HrPanelServiceImpl implements com.cg.its.service.HrPanelService {
 	}
 
 	@Override
-	public List<Candidate> viewInterviewCandidates() throws DetailsNotFoundException {
+	public List<Candidate> viewInterviewCandidates(Integer panelMemberId) throws DetailsNotFoundException {
 		
-		List<Candidate> interviewCandidatesList= new ArrayList<Candidate>();
-		interviewScheduleRepo.findAll().stream().forEach(list-> interviewCandidatesList.add(list.getCandidate()));
-		if(interviewCandidatesList.isEmpty()) {
-			throw new DetailsNotFoundException("candidate not found");
+		Optional<PanelMember> p= panelMemberRepo.findById(panelMemberId);
+		
+		if(p.isPresent()) {
+			List<Candidate> interviewCandidatesList= new ArrayList<Candidate>();
+			interviewScheduleRepo.findAll().stream().filter(list -> list.getPanelMember().equals(p.get())).forEach(s -> interviewCandidatesList.add(s.getCandidate()));
+			if(interviewCandidatesList.isEmpty()) {
+				throw new DetailsNotFoundException("candidates not found");
+			}
+			else {
+				return interviewCandidatesList;
+			}
 		}
 		else {
-		return interviewCandidatesList;
+			throw new DetailsNotFoundException("Candidates not found");
 		}
 	}
 	
 	
 	@Override
-	public List<InterviewSchedule> getHrInterviews() {
+	public List<InterviewSchedule> getHrInterviews( Integer panelMemberId )throws DetailsNotFoundException {
 		
-		List<InterviewSchedule> interviews=interviewScheduleRepo.findAll();
-		if(interviews.isEmpty()) {
-			throw new InterviewNotFoundException("No Interviews Scheduled");
+		
+		Optional<PanelMember> p= panelMemberRepo.findById(panelMemberId);
+		
+		if(p.isPresent()) {
+		
+			List<InterviewSchedule> interviews= new ArrayList<InterviewSchedule>();
+					interviewScheduleRepo.findAll().stream().filter(list-> list.getPanelMember().equals(p.get())).forEach(s -> interviews.add(s));
+			if(interviews.isEmpty()) {
+				throw new InterviewNotFoundException("No Interviews Scheduled");
+			}
+			else {
+				return interviews;
+			}
 		}
 		else {
-			return interviews;
+			throw new DetailsNotFoundException("Interviews not found");
 		}
-	}
 	
 
+}
 }

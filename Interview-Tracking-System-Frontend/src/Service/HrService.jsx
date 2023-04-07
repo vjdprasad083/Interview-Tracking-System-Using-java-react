@@ -3,11 +3,11 @@ const showUrl="http://localhost:8080/api/v1/hr/interviews";
 
 class HrService{
 
-    getInterviews(){
-        return axios.get(showUrl);
+    getInterviewsById(interview){
+        return axios.get(showUrl+'/'+interview);
     }
-    getInterviewCandidates(){
-        return axios.get(showUrl+'/candidates');
+    getInterviewCandidates(panelMemberId){
+        return axios.get(showUrl+'/candidates'+'/'+panelMemberId);
     }
     giveRating(interviewId,hrRating){
         return axios.put(showUrl+'/'+interviewId+'/'+hrRating);

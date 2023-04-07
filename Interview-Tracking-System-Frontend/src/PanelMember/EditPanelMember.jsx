@@ -51,15 +51,14 @@ function EditPanelMember(){
         <div className="addCandidate-form">
 
              <form onSubmit={handleSubmit(editPanelMember)}>
-                <input type="text" name="panelMemberId" placeholder="Employee Name" value={panelMember.employee.employeeName} onChange={handleChange} className="form-control"
+                <input type="text" name="panelMemberId" placeholder="Employee Name" value={panelMember.employee.employeeName}  className="form-control"
                 {...register("panelMemberId")}/>
 
-                <input type="text" name="password" placeholder="Password" value={panelMember.password} onChange={handleChange} className="form-control"
+                <input type="text" name="password" placeholder="Password" value={panelMember.password}  className="form-control"
                 {...register("password")}/>
             
-                <input type="text" name="employeeId" placeholder="Employee Id" value={panelMember.employee.employeeId} onChange={handleChange} className="form-control"
+                <input type="text" name="employeeId" placeholder="Employee Id" value={panelMember.employee.employeeId}  className="form-control"
                 {...register("employeeId")}/>
-               
 
                 <input type="text" name="panelMemberType" placeholder="PanelMemberType" defaultValue={panelMember.panelMemberType} onChange={(e) => handleChange(e)} className="form-control"
                 {...register("panelMemberType")}/>

@@ -28,9 +28,6 @@ function SaveEmployee(){
                 {errors.employeeName && errors.employeeName.type === 'required' && <span className='error'> Employee Name is Required</span>}
                 {errors.employeeName && errors.employeeName.type === 'maxLength' && <span className='error'>Employee Name must not contain more than 20 charcters</span>}
                 
-                <input type="text" name="role" placeholder="Employee Role" className="form-control"
-                 {...register("role", {maxLength:20})}/>
-                {errors.role && errors.role.type === 'maxLength' && <span className='error'>Employee role must not contain more than 20 charcters</span>}
                
                 <br></br><button type="submit" className="btn btn-primary">Add</button>
             </form>

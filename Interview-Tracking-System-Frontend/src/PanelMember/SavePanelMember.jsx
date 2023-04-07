@@ -47,10 +47,10 @@ function SavePanelMember(){
                 {...register("employeeId")}/>
                
 
-                <input type="text" name="password" placeholder="Password" className="form-control"
+                {/* <input type="text" name="password" placeholder="Password" value={"employee123"} className="form-control"
                 {...register("password", {required:true, maxLength:10})}/>
                 {errors.password && errors.password.type === 'required' && <span className='error'>Password is Required</span>}
-                {errors.password && errors.password.type === 'maxLength' && <span className='error'>Password must not contain more than 10 charcters</span>}
+                {errors.password && errors.password.type === 'maxLength' && <span className='error'>Password must not contain more than 10 charcters</span>} */}
 
 
                 <input type="text" name="panelMemberType" placeholder="PanelMemberType" className="form-control"
