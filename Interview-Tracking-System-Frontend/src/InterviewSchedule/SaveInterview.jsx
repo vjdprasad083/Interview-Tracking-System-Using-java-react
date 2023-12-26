@@ -1,12 +1,15 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import AdminHeader from "../Component/AdminHeader";
+import CandidateService from "../Service/CandidateService";
 import InterviewScheduleService from "../Service/InterviewScheduleService";
 import PanelMemberService from "../Service/PanelMemberService";
 import ShowInterviews from "../InterviewSchedule/ShowInterviews";
 
-function EditInterview(props) {
+function SaveInterview(props) {
+
   const history = useNavigate();
 
   const {
@@ -15,30 +18,11 @@ function EditInterview(props) {
     formState: { errors },
   } = useForm();
 
-  const { id, onComponentChange } = props
+  const { id, onComponentChange } = props;
 
   const [panelMembers, setPanelMembers] = useState([]);
 
-  const [interviews, setInterviews] = useState({
-    interviewSchduleId: "",
-    candidate: "",
-    panelMember: "",
-    interviewDate: "",
-    finalStatus: "",
-  });
-
-  useEffect(() => {
-    if (id) {
-      getInterviewById(id);
-    }
-  });
-
-  const getInterviewById = async (id) => {
-    let interviews = await (
-      await InterviewScheduleService.getInterviewById(id)
-    ).data;
-    setInterviews(interviews);
-  };
+  const [candidate, setCandidate] = useState([]);
 
   useEffect(() => {
     const getEmployee = async () => {
@@ -49,40 +33,47 @@ function EditInterview(props) {
     getEmployee();
   }, []);
 
-  const handleChange = (e) => {
-    setInterviews({ ...interviews, [e.target.placeholder]: e.target.value });
+  useEffect(() => {
+    if (id) {
+      getCandidateById(id);
+    }
+  });
+
+  const getCandidateById = async (id) => {
+    let candidate = await (await CandidateService.getCandidateById(id)).data;
+    setCandidate(candidate);
   };
 
-  const editInterview = (interview) => {
-    console.log(interviews);
-    InterviewScheduleService.updateInterview(
-      id,
-      interview.panelMember,
-      interviews.candidate.candidateId,
-      interview
-    ).then((response) => {
-      alert("Updated successfully");
-      // history("/ShowInterviews");
-      onComponentChange(<ShowInterviews onComponentChange = {onComponentChange} />)
-    });
+  const addInterview = (data) => {
+    console.log(data);
+    InterviewScheduleService.scheduleInterview(id, data.panelMember, data).then(
+      (response) => {
+        alert("Added successfully");
+        // history("/ShowInterviews");
+        onComponentChange(<ShowInterviews onComponentChange = {onComponentChange} />)
+      }
+    );
   };
 
   return (
     <div>
       {/* <AdminHeader /> */}
-
       <div className="addCandidate">
         <div className="addCandidate-form">
-          <form onSubmit={handleSubmit(editInterview)}>
+          <form onSubmit={handleSubmit(addInterview)}>
             <input
               type="text"
               name="candidate"
               placeholder="Candidate Id"
-              value={interviews.candidate.candidateName}
-              onChange={handleChange}
+              value={candidate.candidateName}
               className="form-control"
-              {...register("candidate")}/>
+              {...register("candidate", { maxLength: 20 })}/>
             <br />
+            {errors.candidate && errors.candidate.type === "maxLength" && (
+              <span className="error">
+                Candidate Id must not contain more than 20 charcters
+              </span>
+            )}
 
             <select
               name="panelMember"
@@ -95,13 +86,11 @@ function EditInterview(props) {
                 </option>
               ))}
             </select>
-            <br></br>
-
+            <br />
             <input
               type="Date"
               name="interviewDate"
               placeholder="Interview Date"
-              onChange={(e) => handleChange(e)}
               className="form-control"
               {...register("interviewDate", { required: true })}/>
             <br />
@@ -113,18 +102,22 @@ function EditInterview(props) {
             <input
               type="text"
               name="finalStatus"
-              placeholder="Status"
-              onChange={(e) => handleChange(e)}
+              placeholder="Final Status"
               className="form-control"
-              {...register("finalStatus", { required: true })}/>
+              {...register("finalStatus", { maxLength: 20 })}/>
             <br />
             {errors.finalStatus && errors.finalStatus.type === "required" && (
               <span className="error"> Final Status is Required</span>
             )}
+            {errors.finalStatus && errors.finalStatus.type === "maxLength" && (
+              <span className="error">
+                Final Status must not contain more than 20 charcters
+              </span>
+            )}
 
             <br></br>
             <button type="submit" className="btn btn-primary">
-              Update
+              Add
             </button>
           </form>
         </div>
@@ -133,4 +126,4 @@ function EditInterview(props) {
   );
 }
 
-export default EditInterview;
+export default SaveInterview;

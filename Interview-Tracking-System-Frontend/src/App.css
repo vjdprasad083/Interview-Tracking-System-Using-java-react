@@ -1,7 +1,6 @@
  * {
   font-family: Arial, Helvetica, sans-serif;
 }
-
 .header{
   display: flex;
   background-color: #0d3853;
@@ -125,8 +124,10 @@
   color: rgb(0, 0, 0);
   text-decoration: none;
 }
-.admin-menu nav ul li a:hover{
- color: rgb(83, 75, 75); 
+.admin-menu nav ul li.selected { 
+  color: white;
+  background-color: rgba(13, 56, 83, 0.2);
+   border-bottom: 2px solid #0d3853; 
 }
 .admin-menu nav ul li ul li{
   display: block;
@@ -158,8 +159,6 @@
   background-color: white;
   display: block;
 }
-
-
 
 .main-container {
   width: 100%;
@@ -197,12 +196,13 @@
 .addCandidate-form{
   margin-left: auto;
   margin-right: auto;
-  width: 31rem;
+  width: 25rem;
   color: red;
+  padding-bottom: 2rem;
 }
 .addCandidate-form button{
   width:6rem;
-  margin-left: 22rem;
+  margin-left: 19rem;
 }
 .temp{
   text-align: center;

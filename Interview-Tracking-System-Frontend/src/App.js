@@ -2,14 +2,15 @@ import './App.css';
 import './Stylings/Home.css'
 
 
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+
+import { BrowserRouter, Route, Routes, useNavigate } from 'react-router-dom';
 import ShowCandidates from './Candidate/ShowCandidates';
 import SaveCandidate from './Candidate/SaveCandidate';
 import SavePanelMember from './PanelMember/SavePanelMember';
 import SaveEmployee from './Employee/SaveEmployee';
 import ShowPanelMembers from './PanelMember/ShowPanelMembers';
 import ShowEmployees from './Employee/ShowEmployee';
-import AddInterview from './InterviewSchedule/AddInterview';
+import SaveInterview from './InterviewSchedule/SaveInterview';
 import EditCandidate from './Candidate/EditCandidate';
 import ShowInterviews from './InterviewSchedule/ShowInterviews';
 import EditEmployee from './Employee/EditEmployee';
@@ -30,8 +31,10 @@ import Login from './Component/Login';
 import Home from './Component/Home';
 import Help from './Component/Help';
 import Contact from './Component/Contact';
+import AdminPanel from './Component/AdminPanel';
 
 function App() {
+
   return (
     <div >
       <BrowserRouter >
@@ -50,7 +53,7 @@ function App() {
           <Route path="/ShowPanelMembers"  element={<ShowPanelMembers />}></Route>
           <Route path="/SaveEmployee"  element={<SaveEmployee />}></Route>
           <Route path="/ShowEmployees"  element={<ShowEmployees />}></Route>
-          <Route path="/AddInterview/:id"  element={<AddInterview/>}></Route>
+          <Route path="/SaveInterview/:id"  element={<SaveInterview/>}></Route>
           <Route path="/EditCandidate/:id"  element={<EditCandidate />}></Route>
           <Route path="/ShowInterviews"  element={<ShowInterviews />}></Route>
           <Route path="/EditEmployee/:id"  element={<EditEmployee />}></Route>
@@ -64,6 +67,7 @@ function App() {
           <Route path="/TechInterviews"  element={<TechInterviews />}></Route>
           <Route path="/TechInterviewCandidates"  element={<TechInterviewCandidates />}></Route>
           <Route path="/GiveTechRating/:interviewId"  element={<GiveTechRating />}></Route>
+          <Route path="/AdminPanel" element={<AdminPanel />}></Route>
         </Routes>
       </BrowserRouter>
     </div>  

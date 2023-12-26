@@ -7,9 +7,11 @@ const HrInterviews = () => {
   const [interviews, setInterviews] = useState([]);
 
   useEffect(() => {
-    HrService.getInterviewsById(sessionStorage.getItem('id')).then((response) => {
-      setInterviews(response.data);
-    });
+    HrService.getInterviewsById(sessionStorage.getItem("id")).then(
+      (response) => {
+        setInterviews(response.data);
+      }
+    );
   }, []);
 
   return (
@@ -42,8 +44,7 @@ const HrInterviews = () => {
                 <td>
                   <Link
                     className="btn btn-success"
-                    to={`/GiveHrRating/${interview.interviewSchduleId}`}
-                  >
+                    to={`/GiveHrRating/${interview.interviewSchduleId}`}>
                     Give Rating
                   </Link>
                 </td>
