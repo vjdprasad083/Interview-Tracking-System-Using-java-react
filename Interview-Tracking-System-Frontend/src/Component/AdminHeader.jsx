@@ -9,6 +9,8 @@ import SaveEmployee from "../Employee/SaveEmployee";
 import ShowPanelMembers from "../PanelMember/ShowPanelMembers";
 import ShowInterviews from "../InterviewSchedule/ShowInterviews";
 import Contact from "./Contact";
+import Profile from "./Profile";
+import EditProfile from "./EditProfile";
 import Help from "./Help";
 import SaveAdmin from "../Admin/SaveAdmin";
 import UpdatePassword from "../Admin/UpdatePassword";
@@ -32,7 +34,7 @@ function AdminHeader({ onComponentChange }) {
     onComponentChange(component);
   };
 
-  const [selectedItem, setSelectedItem] = useState('');
+  const [selectedItem, setSelectedItem] = useState('interviews');
 
   const handleItemClick = (item) => {
     setSelectedItem(item);
@@ -60,22 +62,22 @@ function AdminHeader({ onComponentChange }) {
         <nav className="header-menu">
           <ul>
             <li className="header-menu-li">
-              <a className="active" href="#" onClick={() => handleComponentClick(<ShowInterviews onComponentChange = {onComponentChange} />)}>
+              <a className="active" href="#" onClick={() => { handleItemClick('interviews'); handleComponentClick(<ShowInterviews onComponentChange = {onComponentChange} />)}}>
                 Home
               </a>
             </li>
             <li className="header-menu-li">
-              <a className="active" href="#blog" onClick={() => handleComponentClick(<Contact />)}>
+              <a className="active" href="#blog" onClick={() => { handleItemClick(''); handleComponentClick(<Contact />)}}>
                 Blog
               </a>
             </li>
             <li className="header-menu-li">
-              <a className="active" href="#help" onClick={() => handleComponentClick(<Help />)}>
+              <a className="active" href="#help"  onClick={() => { handleItemClick(''); handleComponentClick(<Help />)}}>
                 Help
               </a>
             </li>
             <li className="header-menu-li">
-              <a className="active" href="#contact" onClick={() => handleComponentClick(<Contact />)}>
+              <a className="active" href="#contact" onClick={() => { handleItemClick(''); handleComponentClick(<Contact />)}}>
                 Contact us
               </a>
             </li>
@@ -94,19 +96,19 @@ function AdminHeader({ onComponentChange }) {
               </svg>
               <ul className="profile-menu">
                 <li>
-                  <a href="#">My Profile</a>
+                  <a href="#" onClick={() => { handleItemClick(''); handleComponentClick(<Profile />)}}>My Profile</a>
                 </li>
                 <li>
-                  <a href="#">Edit Profile</a>
+                  <a href="#" onClick={() => { handleItemClick(''); handleComponentClick(<EditProfile />)}}>Edit Profile</a>
                 </li>
                 <li>
-                  <a href="#updatePassword" onClick={() => handleComponentClick(<UpdatePassword />)}>Change password</a>
+                  <a href="#updatePassword" onClick={() => { handleItemClick(''); handleComponentClick(<UpdatePassword />)}}>Change password</a>
                 </li>
                 <li>
-                  <a href="#saveAdmin" onClick={() => handleComponentClick(<SaveAdmin />)}>Add Admin</a>
+                  <a href="#saveAdmin" onClick={() => { handleItemClick(''); handleComponentClick(<SaveAdmin />)}}>Add Admin</a>
                 </li>
                 <li>
-                  <a href="#help" onClick={() => handleComponentClick(<Help />)}>Help</a>
+                  <a href="#help" onClick={() => { handleItemClick(''); handleComponentClick(<Help />)}}>Help</a>
                 </li>
                 <li>
                   <a onClick={logout}>Logout</a>
